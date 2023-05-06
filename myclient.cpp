@@ -10,13 +10,13 @@ int main(void)
     {
         Socket::UDP sock;
         
-        sock.bind(3000);
+        sock.bind(300);
         
         sock.send("127.0.0.1", 2000, "request");
         
         Socket::Datagram received = sock.receive();
         
-        cout << received.data << endl;
+        cout << received.data << " " << endl;
         
         sock.close();
     }
