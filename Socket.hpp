@@ -20,26 +20,20 @@
 
 #ifndef _SOCKET_HPP_
 #define _SOCKET_HPP_
-
 #include <iostream>
 #include <sstream>
 #include <exception>
 #include <string>
 #include <stdlib.h>
-
 #include <arpa/inet.h>
-
 #define MAX_BUFFER 1024
-
 using namespace std;
-
 namespace Socket
 {
     typedef int Socket;
     typedef string Ip;
     typedef unsigned int Port;
     typedef string Data;
-    
     typedef struct
     {
         Ip ip;
@@ -51,7 +45,6 @@ namespace Socket
         Address address;
         Data data;
     }Datagram;
-    
     struct sockaddr_in* to_sockaddr(Address* a)
     {   struct sockaddr_in* ret;
 
@@ -62,7 +55,6 @@ namespace Socket
             
         return ret;
     }
-
     Address* from_sockaddr(struct sockaddr_in* address)
     {   Address* ret;
 
@@ -72,7 +64,6 @@ namespace Socket
         
         return ret;
     }
-
     class Exception
     {
     private:
@@ -81,7 +72,6 @@ namespace Socket
         Exception(string error) { this->_message = error; }
         virtual const char* what() { return this->_message.c_str(); }
     };
-
     class UDP
     {
     private:
